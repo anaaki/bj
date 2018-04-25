@@ -1,4 +1,4 @@
-from bj.deck import Deck
+from bj.deck import Deck, Card, Player
 import unittest
 
 
@@ -29,3 +29,15 @@ class TestDeck(unittest.TestCase):
         self.assertTrue(
             all([True if c.val == 1 else False for c in ace_cards])
         )
+
+class TestPlayer(unittest.TestCase):
+
+    def setUp(self):
+        self.deck = Deck()
+    
+    def test_draw_card(self):
+        """カードを引く"""
+        player = Player()
+        card = player.draw_card(self.deck)
+        self.assertEqual(Card, type(card))
+        self.assertEqual(51, len(self.deck.cards))

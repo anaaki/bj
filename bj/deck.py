@@ -1,4 +1,4 @@
-
+import random
 
 class Deck:
     """トランプを引くデッキ"""
@@ -29,7 +29,26 @@ class Deck:
         for s in card_suits:
             for p in card_props:
                 self.cards.append(Card(suit=s, val=p[0], name=p[1]))
+        # カードをシャッフル
+        random.shuffle(self.cards)
+
+    def draw_card(self):
+        if len(self.cards)> 0:
+            return self.cards.pop()
+        else:
+            return None
 
 class Card:
     def __init__(self, val, suit, name):
         self.val, self.suit, self.name = val, suit, name
+
+class Player:
+
+    def __init__(self):
+        pass
+    
+    def draw_card(self, deck):
+        """カードを引く
+        return Card()
+        """
+        return deck.draw_card()
