@@ -1,4 +1,4 @@
-from bj.deck import Deck, Card, Player
+from bj.deck import Deck, Card, Player, Dealer
 import unittest
 
 
@@ -30,11 +30,12 @@ class TestDeck(unittest.TestCase):
             all([True if c.val == 1 else False for c in ace_cards])
         )
 
+
 class TestPlayer(unittest.TestCase):
 
     def setUp(self):
         self.deck = Deck()
-    
+
     def test_draw_card(self):
         """カードを引く"""
         player = Player()
@@ -42,3 +43,18 @@ class TestPlayer(unittest.TestCase):
         player.draw_card(self.deck)
         self.assertEqual(Card, type(player.stock[0]))
         self.assertEqual(50, len(self.deck.cards))
+
+
+class TestDealer(unittest.TestCase):
+    def setUp(self):
+        self.deck = Deck()
+
+    def test_draw_card(self):
+        """カードを引けるが、2枚めは非表示になっている"""
+        dealer = Dealer()
+        dealer.draw_card(self.deck)
+        dealer.draw_card(self.deck)
+        self.assertTrue(dealer.stock[0].visible)
+        self.assertFalse(dealer.stock[1].visible)
+        dealer.draw_card(self.deck)
+        self.assertTrue(dealer.stock[2].visible)

@@ -41,6 +41,7 @@ class Deck:
 class Card:
     def __init__(self, val, suit, name):
         self.val, self.suit, self.name = val, suit, name
+        self.visible = True
 
 class Player:
 
@@ -53,3 +54,14 @@ class Player:
         card = deck.draw_card()
         self.stock.append(card)
         
+class Dealer(Player):
+    def draw_card(self, deck):
+        """カードを引く
+        2枚目は見えない
+        """
+        card = deck.draw_card()
+        if len(self.stock) == 1:
+            card.visible = False
+        self.stock.append(card)
+            
+    
