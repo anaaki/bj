@@ -38,6 +38,7 @@ class TestPlayer(unittest.TestCase):
     def test_draw_card(self):
         """カードを引く"""
         player = Player()
-        card = player.draw_card(self.deck)
-        self.assertEqual(Card, type(card))
-        self.assertEqual(51, len(self.deck.cards))
+        player.draw_card(self.deck)
+        player.draw_card(self.deck)
+        self.assertEqual(Card, type(player.stock[0]))
+        self.assertEqual(50, len(self.deck.cards))

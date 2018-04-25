@@ -45,10 +45,11 @@ class Card:
 class Player:
 
     def __init__(self):
-        pass
+        self.stock =[]
     
     def draw_card(self, deck):
         """カードを引く
-        return Card()
         """
-        return deck.draw_card()
+        card = deck.draw_card()
+        self.stock.append(card)
+        
