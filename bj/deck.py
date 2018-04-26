@@ -1,9 +1,11 @@
 import random
+from bj.judge import Judge
 
-class Deck:
+class Deck(Judge):
     """トランプを引くデッキ"""
 
     def __init__(self):
+        super().__init__()
         card_props = [
             (1, "A"),
             (2, "2"),
