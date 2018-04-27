@@ -42,8 +42,18 @@ class Card:
     def __init__(self, val, suit, name):
         self.val, self.suit, self.name = val, suit, name
         self.visible = True
+            
 
-class Player:
+class Show:
+    """カードを画面に写す"""
+    def show_stock(self):
+        for card in self.stock:
+            if card.visible:
+                print(card.suit, card.name)
+            else:
+                print("*", "*")
+
+class Player(Show):
 
     def __init__(self):
         self.stock =[]
@@ -63,5 +73,3 @@ class Dealer(Player):
         if len(self.stock) == 1:
             card.visible = False
         self.stock.append(card)
-            
-    
