@@ -15,12 +15,20 @@ class Judge:
         return False
 
     def final_judge(self):
+        player_is_bust = self.is_bust(self.player)
+        dealer_is_bust = self.is_bust(self.dealer)
         player_score = abs(self.__sum_cards(self.player) - self.BASE)
         dealer_score = abs(self.__sum_cards(self.dealer) - self.BASE)
+        if player_is_bust:
+            # ディーラーと共にバーストしてもプレイヤーの負け
+            return "player lose"
+        if dealer_is_bust:
+            return "player win"
+
         if player_score < dealer_score:
-            self.judge_msg = "player win"
+            return "player win"
         elif player_score == dealer_score:
-            self.judge_msg = "player push"
+            return "player push"
         else:
-            self.judge_msg = "player lose"
+            return "player lose"
             
