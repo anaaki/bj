@@ -21,7 +21,7 @@ class TestDeck(unittest.TestCase):
             all([True if c.val == 10 else False for c in jqk_cards])
         )
 
-    def test_ace_is_10(self):
+    def test_ace_is_1(self):
         """ Aはとりあえず「1」としてだけ扱う。「11」にはしない"""
         ace_cards = [
             c for c in self.deck.cards if c.name in ["A"]]
