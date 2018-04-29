@@ -40,3 +40,14 @@ class TestJudge(unittest.TestCase):
         player.stock = [Card(10, "10", "ダイヤ"), Card(9, "9", "ダイヤ"), Card(3, "3", "ダイヤ")]
         deck.is_bust(player=player)
         self.assertTrue(deck.is_bust(player=player))
+        self.assertTrue(deck.is_bust(player=player))
+    
+    def test_bust_both(self):
+        """両方バーストすると、ディーラーが勝つ"""
+        deck = Deck()
+        player = Player()
+        dealer = Dealer()
+        player.stock = [Card(10, "Q", "ダイヤ"), Card(8, "8", "ダイヤ"), Card(10, "J", "ダイヤ")]
+        dealer.stock = [Card(10, "Q", "クラブ"), Card(8, "8", "クラブ"), Card(10, "J", "クラブ")]
+        deck.add_player(player=player, dealer=dealer)
+        self.assertEqual("player lose", deck.final_judge())
