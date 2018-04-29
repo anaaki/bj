@@ -12,9 +12,10 @@ class Judge:
     def final_judge(self):
         player_score = self.__sum_cards(self.player)
         dealer_score = self.__sum_cards(self.dealer)
-
         if abs(player_score) < abs(dealer_score):
             self.judge_msg = "player win"
+        elif abs(player_score) == abs(dealer_score):
+            self.judge_msg = "player push"
         else:
             self.judge_msg = "player lose"
             
