@@ -3,11 +3,6 @@ class Judge:
         self.judge_msg = ""
         self.BASE = 21
 
-    def add_player(self, player, dealer):
-        """プレイヤを追加、審判の対象"""
-        self.player = player
-        self.dealer = dealer
-
     def final_judge(self):
         player_score = sum([card.val
             for card in self.player.stock

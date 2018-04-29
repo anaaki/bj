@@ -34,6 +34,11 @@ class Deck(Judge):
         # カードをシャッフル
         random.shuffle(self.cards)
 
+    def add_player(self, player, dealer):
+        """プレイヤを追加、審判の対象"""
+        self.player = player
+        self.dealer = dealer
+
     def draw_card(self):
         if len(self.cards)> 0:
             return self.cards.pop()
