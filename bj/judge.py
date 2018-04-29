@@ -3,14 +3,15 @@ class Judge:
         self.judge_msg = ""
         self.BASE = 21
 
-    def final_judge(self):
-        player_score = sum([card.val
-            for card in self.player.stock
+    def __sum_cards(self, player):
+        s =  sum([card.val
+            for card in player.stock
         ]) - self.BASE
+        return s
 
-        dealer_score = sum([card.val
-            for card in self.dealer.stock
-        ]) - self.BASE
+    def final_judge(self):
+        player_score = self.__sum_cards(self.player)
+        dealer_score = self.__sum_cards(self.dealer)
 
         if abs(player_score) < abs(dealer_score):
             self.judge_msg = "player win"
