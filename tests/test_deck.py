@@ -66,12 +66,12 @@ class TestDesplay(unittest.TestCase):
 
     def test_show_stock(self):
         """カードをディスプレイに表示"""
-        dealer = Dealer()
-        dealer.draw_card(self.deck)
-        dealer.draw_card(self.deck)
-        player = Player()
-        player.draw_card(self.deck)
-        player.draw_card(self.deck)
-        dealer.show_stock()
-        player.show_stock()
-        self.assertTrue(True)
+        dealer=Dealer()
+        player=Player()
+        self.deck.add_player(player=player, dealer=dealer)
+        cuurent_deck = self.deck.display_deck()
+        expect = """
+        dealer= ダイヤA: *****: ダイヤJ:\n
+        player= クラブA: クラブ1: ダイヤK:
+        """
+        self.assertEqual(expect, cuurent_deck)

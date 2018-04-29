@@ -1,7 +1,8 @@
 import random
 from bj.judge import Judge
+from bj.show import Show
 
-class Deck(Judge):
+class Deck(Judge, Show):
     """トランプを引くデッキ"""
 
     def __init__(self):
@@ -37,15 +38,6 @@ class Card:
         self.val, self.suit, self.name = val, suit, name
         self.visible = True
             
-
-class Show:
-    """カードを画面に写す"""
-    def show_stock(self):
-        for card in self.stock:
-            if card.visible:
-                print(card.suit, card.name)
-            else:
-                print("*", "*")
 
 class PlayerBase:
 
