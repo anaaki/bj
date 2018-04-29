@@ -7,14 +7,14 @@ class Judge:
         s =  sum([card.val
             for card in player.stock
         ]) - self.BASE
-        return s
+        return abs(s)
 
     def final_judge(self):
         player_score = self.__sum_cards(self.player)
         dealer_score = self.__sum_cards(self.dealer)
-        if abs(player_score) < abs(dealer_score):
+        if player_score < dealer_score:
             self.judge_msg = "player win"
-        elif abs(player_score) == abs(dealer_score):
+        elif player_score == dealer_score:
             self.judge_msg = "player push"
         else:
             self.judge_msg = "player lose"
