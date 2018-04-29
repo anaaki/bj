@@ -33,3 +33,10 @@ class TestJudge(unittest.TestCase):
         deck.add_player(player=player, dealer=dealer)
         deck.final_judge()
         self.assertEqual("player push", deck.judge_msg)
+
+    def test_bust(self):
+        deck = Deck()
+        player = Player()
+        player.stock = [Card(10, "10", "ダイヤ"), Card(9, "9", "ダイヤ"), Card(3, "3", "ダイヤ")]
+        deck.is_bust(player=player)
+        self.assertTrue(deck.is_bust(player=player))

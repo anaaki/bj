@@ -9,6 +9,9 @@ class Judge:
         ]) - self.BASE
         return abs(s)
 
+    def is_bust(self, player):
+        return True
+
     def final_judge(self):
         player_score = self.__sum_cards(self.player)
         dealer_score = self.__sum_cards(self.dealer)
