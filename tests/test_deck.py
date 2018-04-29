@@ -58,3 +58,20 @@ class TestDealer(unittest.TestCase):
         self.assertFalse(dealer.stock[1].visible)
         dealer.draw_card(self.deck)
         self.assertTrue(dealer.stock[2].visible)
+
+
+class TestDesplay(unittest.TestCase):
+    def setUp(self):
+        self.deck = Deck()
+
+    def test_show_stock(self):
+        """カードをディスプレイに表示"""
+        dealer = Dealer()
+        dealer.draw_card(self.deck)
+        dealer.draw_card(self.deck)
+        player = Player()
+        player.draw_card(self.deck)
+        player.draw_card(self.deck)
+        dealer.show_stock()
+        player.show_stock()
+        self.assertTrue(True)
