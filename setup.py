@@ -7,5 +7,6 @@ setup(
     author='naoaki taira',
     author_email='taira@gmail.com',
     url='',
-    packages=find_packages(exclude=('tests'))
+    packages=find_packages(exclude=('tests')),
+    test_suite="tests",
 )
