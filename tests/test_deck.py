@@ -65,12 +65,14 @@ class TestDesplay(unittest.TestCase):
         self.deck = Deck()
 
     def test_show_stock(self):
-        """カードをディスプレイに表示"""
+        """カードをディスプレイに表示する時、2枚めは非表示として
+        アスタリスク5個設定されている。"""
         dealer=Dealer()
         player=Player()
-        player.stock = [Card(1, "ダイヤ", "A"), Card(8, "ダイヤ", "8"), Card(10, "ダイヤ", "J")]
-        dealer.stock = [Card(1, "クラブ", "A"), Card(1, "クラブ", "1"), Card(10, "ダイヤ", "K")]
         self.deck.add_player(player=player, dealer=dealer)
+        for i in range(2):
+            player.draw_card(self.deck)
+            dealer.draw_card(self.deck)            
         cuurent_deck = self.deck.display_deck()
-        expect = "dealer=>  クラブA: *****:  ダイヤK:" + "\n" + "player=>  ダイヤA:  ダイヤ8:  ダイヤJ:"
-        self.assertEqual(expect, cuurent_deck)
+        import pdb; pdb.set_trace()
+        self.assertEqual("*****", cuurent_deck[16:21])
