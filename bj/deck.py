@@ -1,8 +1,8 @@
 import random
 from bj.judge import Judge
-from bj.show import Show
+from bj.display import Display
 
-class Deck(Judge, Show):
+class Deck(Judge, Display):
     """トランプを引くデッキ"""
 
     def __init__(self):

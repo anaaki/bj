@@ -1,5 +1,5 @@
 
-class Show:
+class Display:
     """カードを画面に写す"""
     def display_deck(self):
         display_d = self.dealer.display()
