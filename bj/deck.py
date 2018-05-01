@@ -1,7 +1,8 @@
 import random
 from bj.judge import Judge
+from bj.show import Show
 
-class Deck(Judge):
+class Deck(Judge, Show):
     """トランプを引くデッキ"""
 
     def __init__(self):
@@ -37,25 +38,45 @@ class Card:
         self.val, self.suit, self.name = val, suit, name
         self.visible = True
 
+    def display(self):
+        """プレイ用のカードの表示を返す
+        通常は ダイヤA:
+        非表示は *****:
+        になる。
+        """
+        if self.visible:
+            template = "{suit}{name}:".format(suit=self.suit,name=self.name)
+            return template.rjust(7)
+        else:
+            return "*****:".rjust(7)
+            
+
 class PlayerBase:
 
     def __init__(self):
         self.stock =[]
-    
+
     def draw_card(self, deck):
         """カードを引く
         """
         card = deck.draw_card()
         self.stock.append(card)
 
+    def display(self):
+        """プレイ用のカードの表示を返す"""
+        template = "".join([card.display() for card in self.stock])
+        return self.role + "=>{}".format(template)
+
 class Player(PlayerBase):
 
     def __init__(self):
         super().__init__()
-    
+        self.role = "player"
+   
 class Dealer(PlayerBase):
     def __init__(self):
         super().__init__()
+        self.role = "dealer"
 
     def draw_card(self, deck):
         """カードを引く

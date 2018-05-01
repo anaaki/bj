@@ -58,3 +58,24 @@ class TestDealer(unittest.TestCase):
         self.assertFalse(dealer.stock[1].visible)
         dealer.draw_card(self.deck)
         self.assertTrue(dealer.stock[2].visible)
+
+
+class TestDesplay(unittest.TestCase):
+    def setUp(self):
+        self.deck = Deck()
+
+    def test_show_stock(self):
+        """カードをディスプレイに表示する時、2枚めは非表示としてアスタリスク5個設定されている。
+        dealer=> ダイヤA: *****: ダイヤJ:
+        player=> クラブA: クラブ1: ダイヤK:
+        """
+        dealer=Dealer()
+        player=Player()
+        self.deck.add_player(player=player, dealer=dealer)
+        for i in range(2):
+            player.draw_card(self.deck)
+            dealer.draw_card(self.deck)            
+        current_deck = self.deck.display_deck()                
+        self.assertEqual("*****", current_deck[16:21])
+        self.assertTrue(current_deck.startswith("dealer=>"))
+        self.assertTrue(current_deck.split("\n")[1].startswith("player=>"))
