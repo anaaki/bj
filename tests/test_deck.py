@@ -68,10 +68,9 @@ class TestDesplay(unittest.TestCase):
         """カードをディスプレイに表示"""
         dealer=Dealer()
         player=Player()
+        player.stock = [Card(1, "ダイヤ", "A"), Card(8, "ダイヤ", "8"), Card(10, "ダイヤ", "J")]
+        dealer.stock = [Card(1, "クラブ", "A"), Card(1, "クラブ", "1"), Card(10, "ダイヤ", "K")]
         self.deck.add_player(player=player, dealer=dealer)
         cuurent_deck = self.deck.display_deck()
-        expect = """
-        dealer= ダイヤA: *****: ダイヤJ:\n
-        player= クラブA: クラブ1: ダイヤK:
-        """
+        expect = "dealer=>  クラブA: *****:  ダイヤK:" + "\n" + "player=>  ダイヤA:  ダイヤ8:  ダイヤJ:"
         self.assertEqual(expect, cuurent_deck)
