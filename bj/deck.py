@@ -52,10 +52,14 @@ class Card:
             
 
 class PlayerBase:
-
+    """ユーザーの基底クラス"""
     def __init__(self):
         self.stock =[]
 
+    @property
+    def role(self):
+        raise NotImplementedError("サブクラスで実装して下さい。")
+    
     def draw_card(self, deck):
         """カードを引く
         """
@@ -68,15 +72,16 @@ class PlayerBase:
         return self.role + "=>{}".format(template)
 
 class Player(PlayerBase):
-
+    """プレイヤー"""
+    role = "player"
     def __init__(self):
         super().__init__()
-        self.role = "player"
    
 class Dealer(PlayerBase):
+    """ディーラー"""
+    role = "dealer"
     def __init__(self):
         super().__init__()
-        self.role = "dealer"
 
     def draw_card(self, deck):
         """カードを引く
