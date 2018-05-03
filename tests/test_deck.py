@@ -60,6 +60,14 @@ class TestDealer(unittest.TestCase):
         dealer.draw_card(self.deck)
         self.assertTrue(dealer.stock[2].visible)
 
+    def test_draw_card_by_17(self):
+        """17まで引き続けるテスト"""
+        dealer = Dealer()
+        dealer.draw_card(self.deck)
+        dealer.draw_card(self.deck)
+        dealer.draw_card_by_17(self.deck)
+        s = sum([ card.val for card in dealer.stock])
+        self.assertTrue((s >= 17))        
 
 class TestDesplay(unittest.TestCase):
     def setUp(self):

@@ -38,3 +38,13 @@ class Dealer(PlayerBase):
         if len(self.stock) == 1:
             card.visible = False
         self.stock.append(card)
+    
+    def draw_card_by_17(self, deck):
+        """手札が17以上になるまでカードを引き続ける"""
+        while True:
+            if sum([card.val for card in self.stock]) < 17:
+                card = deck.draw_card()
+                self.stock.append(card)
+            else:
+                break
+            
