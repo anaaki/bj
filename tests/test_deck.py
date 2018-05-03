@@ -80,3 +80,16 @@ class TestDesplay(unittest.TestCase):
         self.assertEqual("*****", current_deck[16:21])
         self.assertTrue(current_deck.startswith("dealer=>"))
         self.assertTrue(current_deck.split("\n")[1].startswith("player=>"))
+    
+
+    def test_show_by_final_judge(self):
+        """カードをディスプレイに表示する時、最終ジャッジのときは全部表示する
+        """
+        dealer=Dealer()
+        player=Player()
+        self.deck.add_player(player=player, dealer=dealer)
+        for i in range(2):
+            player.draw_card(self.deck)
+            dealer.draw_card(self.deck)            
+        current_deck = self.deck.display_deck(final_judge=True)                
+        self.assertNotIn("*****", current_deck)

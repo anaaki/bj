@@ -13,9 +13,9 @@ class PlayerBase:
         card = deck.draw_card()
         self.stock.append(card)
 
-    def display(self):
+    def display(self, final_judge=False):
         """プレイ用のカードの表示を返す"""
-        template = "".join([card.display() for card in self.stock])
+        template = "".join([card.display(final_judge=final_judge) for card in self.stock])
         return self.role + "=>{}".format(template)
 
 class Player(PlayerBase):

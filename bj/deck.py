@@ -38,13 +38,13 @@ class Card:
         self.val, self.suit, self.name = val, suit, name
         self.visible = True
 
-    def display(self):
+    def display(self, final_judge=False):
         """プレイ用のカードの表示を返す
         通常は ダイヤA:
         非表示は *****:
         になる。
         """
-        if self.visible:
+        if self.visible or final_judge:
             template = "{suit}{name}:".format(suit=self.suit,name=self.name)
             return template.rjust(7)
         else:
