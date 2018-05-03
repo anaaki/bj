@@ -1,4 +1,5 @@
-from bj.deck import Deck, Card, Player, Dealer
+from bj.deck import Deck, Card
+from bj.player import  Player, Dealer
 import unittest
 
 

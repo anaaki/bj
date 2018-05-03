@@ -1,0 +1,40 @@
+class PlayerBase:
+    """ユーザーの基底クラス"""
+    def __init__(self):
+        self.stock =[]
+
+    @property
+    def role(self):
+        raise NotImplementedError("サブクラスで実装して下さい。")
+    
+    def draw_card(self, deck):
+        """カードを引く
+        """
+        card = deck.draw_card()
+        self.stock.append(card)
+
+    def display(self):
+        """プレイ用のカードの表示を返す"""
+        template = "".join([card.display() for card in self.stock])
+        return self.role + "=>{}".format(template)
+
+class Player(PlayerBase):
+    """プレイヤー"""
+    role = "player"
+    def __init__(self):
+        super().__init__()
+   
+class Dealer(PlayerBase):
+    """ディーラー"""
+    role = "dealer"
+    def __init__(self):
+        super().__init__()
+
+    def draw_card(self, deck):
+        """カードを引く
+        2枚目は見えない
+        """
+        card = deck.draw_card()
+        if len(self.stock) == 1:
+            card.visible = False
+        self.stock.append(card)
