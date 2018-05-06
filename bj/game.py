@@ -22,16 +22,15 @@ class Game:
             draw = input("追加でカードを引きますか? yes/no: ")
             if "n" in draw:
                 break
+            self.player.draw_card(self.deck)
+            if self.deck.is_bust(self.player):
+                print("\n")
+                print("player bust!!")
+                break
             else:
-                self.player.draw_card(self.deck)
-                if self.deck.is_bust(self.player):
-                    print("\n")
-                    print("player bust!!")
-                    break
-                else:
-                    print("\n")
-                    print("---------デッキ状況---------")
-                    print(self.deck.display_deck())
+                print("\n")
+                print("---------デッキ状況---------")
+                print(self.deck.display_deck())
         self.final_judge()
 
     def final_judge(self):
