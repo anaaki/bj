@@ -44,3 +44,6 @@ class Game:
         print(self.deck.display_deck(final_judge=True))
 
 
+def main():
+    game = Game()
+    game.start()
