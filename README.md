@@ -1,3 +1,14 @@
+# BLACK JACKゲーム
+
+ブラックジャックがプレイできるパッケージ
+
+## 遊び方
+
+```
+python setup.py install
+blackjackgame
+```
+
 # blackjackルール
 
 ## ゲームの開始
